@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const Controller = require('egg').Controller;
+const Controller = require("egg").Controller;
 
 class HomeController extends Controller {
   async register() {
@@ -29,6 +29,13 @@ class HomeController extends Controller {
     } else {
       ctx.body = res;
     }
+  }
+
+  async speedRep() {
+    const { ctx } = this;
+    const { cgiName, time } = ctx.request.body;
+    const res = await service.report.speedRep({ cgiName, time });
+    ctx.body = res;
   }
 }
 
